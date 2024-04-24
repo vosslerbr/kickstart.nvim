@@ -1,8 +1,12 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
+vim.cmd.highlight 'DiagnosticUnderlineError guisp=#ff0000 gui=undercurl'
 
 -- Make line numbers default
 vim.opt.number = true
@@ -55,7 +59,7 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 8
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -452,6 +456,8 @@ require('lazy').setup {
         -- But for many setups, the LSP (`tsserver`) will work just fine
         tsserver = {},
         --
+        volar = {},
+        cssls = {},
 
         lua_ls = {
           -- cmd = {...},
@@ -527,8 +533,11 @@ require('lazy').setup {
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        javascript = { { 'prettierd', 'prettier' } },
-        typescript = { { 'prettierd', 'prettier' } },
+        javascript = { 'prettierd', 'prettier' },
+        typescript = { 'prettierd', 'prettier' },
+        css = { 'prettierd', 'prettier' },
+        json = { 'pretterd', 'prettier' },
+        markdown = { 'prettierd', 'prettier' },
       },
     },
   },
@@ -632,15 +641,15 @@ require('lazy').setup {
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
     'folke/tokyonight.nvim',
-    name = 'tokyonight',
+    name = 'tokyonight-moon',
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- Load the colorscheme here
-      vim.cmd.colorscheme 'tokyonight'
+      vim.cmd.colorscheme 'tokyonight-moon'
 
       -- You can configure highlights by doing something like
-      vim.cmd.hi 'Comment gui=none'
+      -- vim.cmd.hi 'Comment gui=none'
     end,
   },
 
@@ -739,7 +748,7 @@ require('lazy').setup {
   },
   -- escape shortcut
   vim.keymap.set('i', 'jj', '<esc>'),
-  vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<enter>'),
+  vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<enter>'),
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
