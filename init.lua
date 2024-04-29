@@ -653,6 +653,19 @@ require('lazy').setup {
     end,
   },
 
+  {
+    'sunjon/shade.nvim',
+    opts = {
+      overlay_opacity = 50,
+      opacity_step = 1,
+      keys = {
+        brightness_up = '<C-Up>',
+        brightness_down = '<C-Down>',
+        toggle = '<Leader>s',
+      },
+    },
+  },
+
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -745,6 +758,27 @@ require('lazy').setup {
     config = function()
       require('nvim-tree').setup {}
     end,
+    opts = {
+      git = {
+        ignore = false,
+      },
+    },
+  },
+  {
+    'f-person/git-blame.nvim',
+    lazy = false,
+  },
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- required
+      'sindrets/diffview.nvim', -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      'nvim-telescope/telescope.nvim', -- optional
+      'ibhagwan/fzf-lua', -- optional
+    },
+    config = true,
   },
   -- escape shortcut
   vim.keymap.set('i', 'jj', '<esc>'),
