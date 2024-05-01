@@ -528,11 +528,6 @@ require('lazy').setup {
       },
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
         javascript = { 'prettierd', 'prettier' },
         typescript = { 'prettierd', 'prettier' },
         css = { 'prettierd', 'prettier' },
@@ -656,7 +651,7 @@ require('lazy').setup {
   {
     'sunjon/shade.nvim',
     opts = {
-      overlay_opacity = 50,
+      overlay_opacity = 60,
       opacity_step = 1,
       keys = {
         brightness_up = '<C-Up>',
@@ -756,13 +751,16 @@ require('lazy').setup {
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      require('nvim-tree').setup {}
+      require('nvim-tree').setup {
+        git = {
+          ignore = false,
+        },
+        view = {
+          side = 'right',
+          width = 40,
+        },
+      }
     end,
-    opts = {
-      git = {
-        ignore = false,
-      },
-    },
   },
   {
     'f-person/git-blame.nvim',
@@ -779,10 +777,12 @@ require('lazy').setup {
       'ibhagwan/fzf-lua', -- optional
     },
     config = true,
+    lazy = false,
   },
   -- escape shortcut
   vim.keymap.set('i', 'jj', '<esc>'),
   vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<enter>'),
+  vim.keymap.set('n', '<leader>gg', ':Neogit<enter>'),
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
