@@ -3,6 +3,7 @@ vim.g.loaded_netrwPlugin = 1
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -779,10 +780,24 @@ require('lazy').setup {
     config = true,
     lazy = false,
   },
+  {
+    'Pocco81/auto-save.nvim',
+    config = function()
+      require('auto-save').setup {
+        -- your config goes here
+        -- or just leave it empty :)
+      }
+    end,
+  },
+  -- this is a test
   -- escape shortcut
   vim.keymap.set('i', 'jj', '<esc>'),
   vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<enter>'),
   vim.keymap.set('n', '<leader>gg', ':Neogit<enter>'),
+
+  -- insert new line above/below
+  vim.keymap.set('n', '<leader>j', 'o<esc>k'),
+  vim.keymap.set('n', '<leader>k', 'O<esc>j'),
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
