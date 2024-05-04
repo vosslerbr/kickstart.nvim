@@ -754,6 +754,18 @@ require('lazy').setup {
     config = true,
     lazy = false,
   },
+  {
+    'tpope/vim-fugitive',
+  },
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup {
+        '*',
+        css = { rgb_fn = true },
+      }
+    end,
+  },
   -- escape shortcut
   vim.keymap.set('i', 'jj', '<esc>'),
   vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<enter>'),
