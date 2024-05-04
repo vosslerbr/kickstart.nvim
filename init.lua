@@ -457,8 +457,13 @@ require('lazy').setup {
         -- But for many setups, the LSP (`tsserver`) will work just fine
         tsserver = {},
         --
-        volar = {},
+        volar = {
+          settings = {
+            filetype = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+          },
+        },
         cssls = {},
+        prismals = {},
 
         lua_ls = {
           -- cmd = {...},
@@ -780,16 +785,16 @@ require('lazy').setup {
     config = true,
     lazy = false,
   },
-  {
-    'Pocco81/auto-save.nvim',
-    config = function()
-      require('auto-save').setup {
-        -- your config goes here
-        -- or just leave it empty :)
-      }
-    end,
-  },
-  -- this is a test
+  -- {
+  --   'Pocco81/auto-save.nvim',
+  --   config = function()
+  --     require('auto-save').setup {
+  --       -- your config goes here
+  --       -- or just leave it empty :)
+  --     }
+  --   end,
+  -- },
+  -- -- this is a test
   -- escape shortcut
   vim.keymap.set('i', 'jj', '<esc>'),
   vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<enter>'),
