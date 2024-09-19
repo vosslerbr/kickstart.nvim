@@ -424,7 +424,7 @@ require('lazy').setup {
       local servers = {
         tsserver = {},
         volar = {
-          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+          filetypes = { 'vue' },
         },
         cssls = {},
         prismals = {},
@@ -491,6 +491,8 @@ require('lazy').setup {
         css = { 'prettierd', 'prettier' },
         json = { 'pretterd', 'prettier' },
         markdown = { 'prettierd', 'prettier' },
+        typescriptreact = { 'prettierd', 'prettier' },
+        javascriptreact = { 'prettierd', 'prettier' },
       },
     },
   },
@@ -590,13 +592,13 @@ require('lazy').setup {
   },
 
   { -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
-    'folke/tokyonight.nvim',
-    name = 'tokyonight-moon',
+    'catppuccin/nvim',
+    name = 'catppuccin',
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- Load the colorscheme here
-      vim.cmd.colorscheme 'tokyonight-moon'
+      vim.cmd.colorscheme 'catppuccin-macchiato'
 
       -- You can configure highlights by doing something like
       -- vim.cmd.hi 'Comment gui=none'
